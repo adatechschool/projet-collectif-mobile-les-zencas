@@ -1,0 +1,30 @@
+{
+    "id": 1,
+    "name":"Girl with Balloon (Banksy)",
+    "date": "01-05-2024",
+    "photos": [
+        {
+            "id": 1,
+            "url": "www.cloudphotos.com/1",
+            "filename": "fds78fgsg987.jpg",
+            "alt": "un dessin au pochoir d'une petite fille laissant échapper un ballon gonflable en forme de coeur rouge."
+        },
+        {
+            "id": 2,
+            "url": "www.cloudphotos.com/2",
+            "filename": "l3ap38fqfds3.jpg",
+            "alt": "un dessin au pochoir d'une petite fille laissant échapper un ballon gonflable en forme de coeur rouge."
+        }
+    ],
+    "coordinates": {
+        "latitude": "40.741895",
+        "longitude": "-73.989308"
+    },
+    "location": {
+        "country": "United-Kingdom",
+        "city": "London",
+        "place": "Waterloo Bridge, South Bank"
+    },
+    "category": "Street art",
+    "description": "A famous Banksy masterpiece, love it!"
+}
