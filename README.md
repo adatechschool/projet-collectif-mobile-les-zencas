@@ -7,7 +7,7 @@ An application to share the places, things, monuments that are not common, singu
 ## Authors
 
 - Apolline Diaz [@apolline-diaz](https://github.com/apolline-diaz)
-- Cholé Pellerin [@pchloe02](https://github.com/pchloe02)
+- Chloé Pellerin [@pchloe02](https://github.com/pchloe02)
 - Eliana Yepes [@Arteinsana7](https://github.com/Arteinsana7)
 - Nicolas Perrotin [@nicotine189](https://github.com/nicotine189)
 - Sam Lavazais [@SamLavazais](https://github.com/SamLavazais)
