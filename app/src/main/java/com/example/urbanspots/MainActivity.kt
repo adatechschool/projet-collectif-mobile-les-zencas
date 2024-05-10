@@ -1,4 +1,5 @@
 package com.example.urbanspots
+import Profile
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -8,7 +9,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Place
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.FloatingActionButton
@@ -37,8 +41,6 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-
-
             UrbanspotsTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
@@ -48,7 +50,6 @@ class MainActivity : ComponentActivity() {
                 ) {
                     BottomNav()
                 }
-
             }
         }
     }
@@ -84,6 +85,28 @@ fun BottomNav () {
                 }
                 IconButton(
                     onClick = {
+                        selected.value = Icons.Default.Place
+                        navigationController.navigate(Screens.SpotMap.screen){
+                            popUpTo(0)
+                        }
+                    },
+
+                    modifier = Modifier.weight(1f)) {
+                    Icon(Icons.Default.Place, contentDescription = null, modifier = Modifier.size(26.dp),
+                        tint = if (selected.value == Icons.Default.Place) Color.White else Color.DarkGray)
+
+                }
+                Box(modifier = Modifier
+                    .weight(1f)
+                    .padding(16.dp),
+                    contentAlignment = Alignment.Center) {
+                    FloatingActionButton(onClick = { Toast.makeText(context,"Add a New Spot", Toast.LENGTH_SHORT).show() }) {
+Icon(Icons.Default.Add , contentDescription = null, tint = AppleGreen )
+                    }
+
+                }
+                IconButton(
+                    onClick = {
                         selected.value = Icons.Default.Search
                         navigationController.navigate(Screens.Filters.screen){
                             popUpTo(0)
@@ -95,14 +118,21 @@ fun BottomNav () {
                         tint = if (selected.value == Icons.Default.Search) Color.White else Color.DarkGray)
 
                 }
-                Box(modifier = Modifier
-                    .weight(1f)
-                    .padding(16.dp),
-                    contentAlignment = Alignment.Center) {
-                    FloatingActionButton(onClick = { Toast.makeText(context,"Add a Spot", Toast.LENGTH_SHORT).show() }) {
+                IconButton(
+                    onClick = {
+                        selected.value = Icons.Default.Person
+                        navigationController.navigate(Screens.Profile.screen){
+                            popUpTo(0)
+                        }
+                    },
 
-                    }
+                    modifier = Modifier.weight(1f)) {
+                    Icon(Icons.Default.Person, contentDescription = null, modifier = Modifier.size(26.dp),
+                        tint = if (selected.value == Icons.Default.Person) Color.White else Color.DarkGray)
+
                 }
+
+
             }
 
         }
@@ -115,6 +145,7 @@ modifier = Modifier.padding(paddingValues)) {
             composable(Screens.SpotMap.screen){ SpotMap() }
             composable(Screens.Filters.screen){ Filters()}
             composable(Screens.Profile.screen){ Profile()}
+
 
         }
 

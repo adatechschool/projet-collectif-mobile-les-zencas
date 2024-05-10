@@ -21,3 +21,4 @@ fun SpotCard () {
 fun SearchBar () {
 
 }
+
