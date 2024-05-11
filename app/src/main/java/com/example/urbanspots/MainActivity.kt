@@ -73,10 +73,10 @@ fun BottomNav () {
                 IconButton(
                     onClick = {
                         selected.value = Icons.Default.Home
-                    navigationController.navigate(Screens.SpotList.screen){
-                        popUpTo(0)
-                    }
-                },
+                        navigationController.navigate(Screens.SpotList.screen){
+                            popUpTo(0)
+                        }
+                    },
 
                     modifier = Modifier.weight(1f)) {
                     Icon(Icons.Default.Home, contentDescription = null, modifier = Modifier.size(26.dp),
@@ -101,7 +101,7 @@ fun BottomNav () {
                     .padding(16.dp),
                     contentAlignment = Alignment.Center) {
                     FloatingActionButton(onClick = { Toast.makeText(context,"Add a New Spot", Toast.LENGTH_SHORT).show() }) {
-Icon(Icons.Default.Add , contentDescription = null, tint = AppleGreen )
+                        Icon(Icons.Default.Add , contentDescription = null, tint = AppleGreen )
                     }
 
                 }
@@ -138,9 +138,9 @@ Icon(Icons.Default.Add , contentDescription = null, tint = AppleGreen )
         }
     )
     {
-        paddingValues ->
+            paddingValues ->
         NavHost(navController = navigationController, startDestination = Screens.SpotList.screen,
-modifier = Modifier.padding(paddingValues)) {
+            modifier = Modifier.padding(paddingValues)) {
             composable(Screens.SpotList.screen){ SpotList()}
             composable(Screens.SpotMap.screen){ SpotMap() }
             composable(Screens.Filters.screen){ Filters()}
@@ -160,8 +160,3 @@ fun BottomNavPreview() {
         BottomNav()
     }
 }
-
-
-
-
-
