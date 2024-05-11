@@ -2,4 +2,13 @@
 <resources>
 
     <style name="Theme.Urbanspots" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="Theme.AnimatedSplash.MySplash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/black</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/avd_applogo</item>
+        <item name="windowSplashScreenAnimationDuration">1000</item>
+        <item name="postSplashScreenTheme">@style/Theme.Urbanspots</item>
+    </style>
+
+
 </resources>
