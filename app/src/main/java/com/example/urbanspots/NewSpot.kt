@@ -1,5 +1,11 @@
 package com.example.urbanspots
 
+import android.net.Uri
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.PickVisualMediaRequest
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,11 +27,16 @@ import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.Alignment
-import java.time.format.TextStyle
+import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.layout.ContentScale
+import coil.compose.AsyncImage
 
 @Composable
 fun NewSpotScreen(){
@@ -34,44 +45,59 @@ fun NewSpotScreen(){
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // TODO: centrer le titre + mettre en forme
         Text(
             text = "Create a spot",
             style = MaterialTheme.typography.displayMedium,
             modifier = Modifier.padding(top = 40.dp, bottom = 50.dp)
         )
         Spacer(modifier = Modifier.height(20.dp))
-        PhotoUpload()
-        Spacer(modifier = Modifier.height(20.dp))
         DetailsInputs()
         Spacer(modifier = Modifier.height(20.dp))
-        SubmitBtn()
+        PhotoUpload()
+        Spacer(modifier = Modifier.height(20.dp))
     }
+    SubmitBtn()
 }
 
 // TODO : créer un photos Upload
 @Composable
 fun PhotoUpload(modifier: Modifier = Modifier){
-    Text(text = "photo upload")
-    /*
-    // Registers a photo picker activity launcher in single-select mode.
-    val pickMedia = registerForActivityResult(PickVisualMedia()) { uri ->
-        // Callback is invoked after the user selects a media item or closes the
-        // photo picker.
-        if (uri != null) {
-            Log.d("PhotoPicker", "Selected URI: $uri")
-        } else {
-            Log.d("PhotoPicker", "No media selected")
+    var selectedImageUri by remember {
+        mutableStateOf<Uri?>(null)
+    }
+    val singlePhotoPickerLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.PickVisualMedia(),
+        onResult = { uri -> selectedImageUri = uri })
+
+    LazyColumn(
+        modifier = Modifier.fillMaxSize()
+    ) {
+        item {
+            Row(
+                modifier = Modifier.fillMaxSize(),
+                horizontalArrangement = Arrangement.Center
+            ){
+                Button(
+                    onClick = {
+                        singlePhotoPickerLauncher.launch(
+                            PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
+                        )
+                              }
+                    ) {
+                    Text(text = "Pick one photo")
+                }
+            }
+        }
+
+        item {
+            AsyncImage(
+                model = selectedImageUri,
+                contentDescription =  null,
+                modifier = Modifier.fillMaxSize(),
+                contentScale = ContentScale.Crop
+            )
         }
     }
-
-    // Launch the photo picker and let the user choose images and videos.
-    pickMedia.launch(PickVisualMediaRequest(PickVisualMedia.ImageAndVideo))
-
-    // Launch the photo picker and let the user choose only images.
-    //    pickMedia.launch(PickVisualMediaRequest(PickVisualMedia.ImageOnly))
-
-     */
 }
 
 
@@ -83,7 +109,7 @@ fun DetailsInputs(modifier: Modifier = Modifier){
         TextInput(label = "Spot Title")
         // TODO : changer le category Input en select Input
 
-        CategoryInput()
+        TextInput(label = "Category")
         TextInput(label = "Description")
 
         // TODO : ajouter un input "location" qui prend la localisation du téléphone
@@ -111,20 +137,28 @@ fun TextInput(label: String, modifier: Modifier = Modifier) {
 fun CategoryInput(){
     Text(text = "menu déroulant à ajouter")
 }
-/*
-name
-category
-description
-location (automatic : prendre les coordonnées GPS du téléphone)
-photos
- */
+
 @Composable
-fun SubmitBtn() {
-    Button(onClick = { /*TODO*/ }) {
-        Text("Submit")
+fun SubmitBtn(modifier: Modifier = Modifier) {
+    Box (
+        modifier = Modifier
+            .fillMaxSize(),
+        contentAlignment = Alignment.BottomCenter,
+    ) {
+        Button(
+            onClick = { /*TODO*/ },
+            shape = RectangleShape,
+            modifier = Modifier.fillMaxWidth()
+                .height(60.dp)
+        ) {
+            Text("Submit")
+        }
     }
-    // TODO : centrer le bouton
-    // TODO : activer le bouton (lui faire faire qch, même si on ajoutera + tard le fetch vers l'API)
+    /* TODO : ajouter les actions effectuées par le bouton "submit" :
+        - récupérer la localisation du téléphone
+        - organiser les données récupérées
+        - déclencher le call API (ou la sauvegarde dans le fichier JSON/le repo)
+     */
 }
 
 @Preview(showBackground = true)
