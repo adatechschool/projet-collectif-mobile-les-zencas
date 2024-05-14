@@ -1,0 +1,39 @@
+Spot
+-
+id int PK
+name varchar(30)
+category varchar(30)
+description varchar(200)
+creation_date date
+latitude float(?)
+longitude float(?)
+country varchar(30)
+city varchar(30)
+place varchar(30)
+user_id int FK >- User.id
+
+Photo
+-
+id int PK
+url varchar(100)
+filename varchar(50)
+alt varchar(200)
+spot_id int FK >- Spot.id
+rank int
+
+User
+-
+id int PK
+name string
+email string
+email_verified_at timestamp
+password string
+remember_token string
+created_at timestamp
+updated_at timestamp
+
+Like
+-
+id int PK FK
+spot_id int FK - Spot.id
+user_id int FK - User.id
