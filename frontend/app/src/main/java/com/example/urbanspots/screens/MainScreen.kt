@@ -1,4 +1,4 @@
-package com.mkrdeveloper.lazyrowonclickexamplejetpack.screens
+package com.example.urbanspots.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable

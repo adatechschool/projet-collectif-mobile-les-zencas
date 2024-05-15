@@ -6,12 +6,13 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Box
 import android.animation.ObjectAnimator
-import android.os.Bundle
 import android.view.View
 import android.view.animation.OvershootInterpolator
+import androidx.activity.viewModels
+/*
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.viewModels
+import androidx.activity.viewModels */
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -43,6 +44,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.urbanspots.ui.theme.AppleGreen
 import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.example.urbanspots.screens.MainScreen
 import com.example.urbanspots.ui.theme.UrbanspotsTheme
 
 
@@ -115,7 +117,7 @@ fun BottomNav () {
                 IconButton(
                     onClick = {
                         selected.value = Icons.Default.Home
-                        navigationController.navigate(Screens.SpotList.screen){
+                        navigationController.navigate(Screens.MainScreen.screen){
                             popUpTo(0)
                         }
                     },
@@ -181,9 +183,9 @@ fun BottomNav () {
     )
     {
             paddingValues ->
-        NavHost(navController = navigationController, startDestination = Screens.SpotList.screen,
+        NavHost(navController = navigationController, startDestination = Screens.MainScreen.screen,
             modifier = Modifier.padding(paddingValues)) {
-            composable(Screens.SpotList.screen){ SpotList()}
+            composable(Screens.MainScreen.screen){ SpotList() }
             composable(Screens.SpotMap.screen){ SpotMap() }
             composable(Screens.Filters.screen){ Filters()}
             composable(Screens.Profile.screen){ Profile()}
