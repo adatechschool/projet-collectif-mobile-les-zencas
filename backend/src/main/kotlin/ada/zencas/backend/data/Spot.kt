@@ -14,7 +14,7 @@ class Spot {
     val id: Long = 0
 
     @NotBlank
-    @Column(name = "name", nullable = false, unique = true)
+    @Column(name = "name", nullable = false)
     var name: String = ""
 
     @NotBlank
@@ -32,17 +32,17 @@ class Spot {
     @Column(name = "longitude", nullable = false)
     var longitude: String = ""
 
-    @NotBlank
-    @Column(name = "country", nullable = false)
-    var country: String = ""
-
-    @NotBlank
-    @Column(name = "city", nullable = false)
-    var city: String = ""
-
-    @NotBlank
-    @Column(name = "place", nullable = false)
-    var place: String = ""
+//    @NotBlank
+//    @Column(name = "country", nullable = false)
+//    var country: String = ""
+//
+//    @NotBlank
+//    @Column(name = "city", nullable = false)
+//    var city: String = ""
+//
+//    @NotBlank
+//    @Column(name = "place", nullable = false)
+//    var place: String = ""
 
     @Column(name = "created_on", nullable = false)
     var createdOn: LocalDateTime = LocalDateTime.now()

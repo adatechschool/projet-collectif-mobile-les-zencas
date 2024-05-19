@@ -10,8 +10,8 @@ data class SpotDetail(
     val description: String,
     val latitude: String,
     val longitude: String,
-    val country: String,
-    val city: String,
-    val place: String,
+//    val country: String,
+//    val city: String,
+//    val place: String,
     val createdOn: LocalDateTime
 )
