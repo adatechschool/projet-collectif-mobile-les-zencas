@@ -1,10 +1,9 @@
 package ada.zencas.backend.data.model
 
-import org.springframework.context.annotation.Description
 import java.time.LocalDateTime
 
 // TODO: compléter le Dto en indiquant les caractéristiques de l'objt qui sera manipulé par ce back-end
-data class SpotDto(
+data class SpotDetail(
     val id: Long,
     val name: String,
     val category: String,
