@@ -1,8 +1,9 @@
 package ada.zencas.backend.service
 
 import ada.zencas.backend.data.Spot
-import ada.zencas.backend.data.model.SpotDto
-import ada.zencas.backend.exception.SpotNotFoundException
+import ada.zencas.backend.data.model.SpotBasic
+import ada.zencas.backend.data.model.SpotCreateRequest
+import ada.zencas.backend.data.model.SpotDetail
 import ada.zencas.backend.repository.SpotRepository
 import org.springframework.stereotype.Service
 import java.util.stream.Collectors
@@ -10,23 +11,50 @@ import java.util.stream.Collectors
 @Service
 class SpotService(private val repository: SpotRepository) {
 
-    fun getAllSpots(): List<SpotDto> =
-        repository.findAll().stream().map(this::convertEntityToDto).collect(Collectors.toList())
-
-    // TODO: compléter avec les fonctions nécessaires
-//    fun getSpotById(id: Long): SpotDto {
-//    }
-
-    private fun convertEntityToDto(spot: Spot): SpotDto {
-        return SpotDto(
+    private fun convertEntityToSpotDetail(spot: Spot): SpotDetail {
+        return SpotDetail(
             spot.id,
-            spot.name
+            spot.name,
+            spot.category,
+            spot.description,
+            spot.latitude,
+            spot.longitude,
+//            spot.country,
+//            spot.city,
+//            spot.place,
+            spot.createdOn
         )
     }
 
-    // TODO : compléter le mapping entre le dto et l'entity
-    private fun assignValuesToEntity(spot: Spot, spotRequest: Spot) {
-        spot.name = spotRequest.name
+    private fun convertEntityToSpotBasic(spot: Spot): SpotBasic{
+        return SpotBasic(
+            spot.id,
+            spot.name,
+            spot.category,
+            spot.latitude,
+            spot.longitude,
+//            spot.country,
+//            spot.city,
+//            spot.place,
+            spot.createdOn
+        )
     }
+
+    private fun assignValuesToEntity(spot: Spot, spotRequest: SpotCreateRequest) {
+        spot.name = spotRequest.name
+        spot.category = spotRequest.category
+        spot.description = spotRequest.description
+        spot.latitude = spotRequest.latitude
+        spot.longitude = spotRequest.longitude
+        spot.createdOn = spotRequest.createdOn
+    }
+
+
+    fun getAllSpots(): List<SpotBasic> =
+        repository.findAll().stream().map(this::convertEntityToSpotBasic).collect(Collectors.toList())
+
+//    fun getSpotById(id: Long): SpotDto {
+//    }
+
 
 }
