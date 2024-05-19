@@ -4,9 +4,14 @@ import ada.zencas.backend.data.Spot
 import ada.zencas.backend.data.model.SpotBasic
 import ada.zencas.backend.data.model.SpotCreateRequest
 import ada.zencas.backend.data.model.SpotDetail
+import ada.zencas.backend.data.model.SpotUpdateRequest
+import ada.zencas.backend.exception.SpotNotFoundException
 import ada.zencas.backend.repository.SpotRepository
 import org.springframework.stereotype.Service
+import org.springframework.util.ReflectionUtils
+import java.lang.reflect.Field
 import java.util.stream.Collectors
+import kotlin.reflect.full.memberProperties
 
 @Service
 class SpotService(private val repository: SpotRepository) {
@@ -49,12 +54,51 @@ class SpotService(private val repository: SpotRepository) {
         spot.createdOn = spotRequest.createdOn
     }
 
+    private fun checkForSpotId(id: Long): Boolean {
+        if (!repository.existsById(id)) {
+            throw SpotNotFoundException("Spot with ID: $id does not exist!")
+        }
+        return true
+    }
 
     fun getAllSpots(): List<SpotBasic> =
         repository.findAll().stream().map(this::convertEntityToSpotBasic).collect(Collectors.toList())
 
-//    fun getSpotById(id: Long): SpotDto {
-//    }
+    fun getSpotById(id: Long): SpotDetail {
+        checkForSpotId(id)
+        val spot: Spot = repository.findSpotById(id)
+        return convertEntityToSpotDetail(spot)
+    }
 
+    fun createSpot(createRequest: SpotCreateRequest): SpotDetail {
+        val spot = Spot()
+        assignValuesToEntity(spot, createRequest)
+        val savedSpot = repository.save(spot)
+        return convertEntityToSpotDetail(savedSpot)
+    }
+
+    fun updateSpot(id: Long, updateRequest: SpotUpdateRequest): SpotDetail {
+        checkForSpotId(id)
+        val existingSpot: Spot = repository.findSpotById(id)
+
+        for (prop in SpotUpdateRequest::class.memberProperties) {
+            if (prop.get(updateRequest) != null) {
+                val field: Field? = ReflectionUtils.findField(Spot::class.java, prop.name)
+                field?.let {
+                    it.isAccessible = true
+                    ReflectionUtils.setField(it, existingSpot, prop.get(updateRequest))
+                }
+            }
+        }
+
+        val savedTask: Spot = repository.save(existingSpot)
+        return convertEntityToSpotDetail(savedTask)
+    }
+
+    fun deleteSpot(id: Long): String {
+        checkForSpotId(id)
+        repository.deleteById(id)
+        return "Spot with id: $id has been deleted."
+    }
 
 }
