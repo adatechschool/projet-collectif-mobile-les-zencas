@@ -2,6 +2,7 @@ package ada.zencas.backend.data
 
 import jakarta.persistence.*
 import jakarta.validation.constraints.NotBlank
+import java.time.LocalDateTime
 
 @Entity
 @Table(name = "spot")
@@ -42,6 +43,9 @@ class Spot {
     @NotBlank
     @Column(name = "place", nullable = false)
     var place: String = ""
+
+    @Column(name = "created_on", nullable = false)
+    var createdOn: LocalDateTime = LocalDateTime.now()
 
 //    @NotBlank
 //    @Column(name = "user_id", nullable = false)
