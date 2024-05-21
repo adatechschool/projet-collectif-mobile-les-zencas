@@ -1,5 +1,5 @@
 package com.example.urbanspots
-import Profile
+
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -112,7 +112,7 @@ fun BottomNav () {
     Scaffold(
         bottomBar = {
             BottomAppBar (
-                containerColor = AppleGreen
+                containerColor = Color.White
             ) {
                 IconButton(
                     onClick = {
@@ -124,7 +124,7 @@ fun BottomNav () {
 
                     modifier = Modifier.weight(1f)) {
                     Icon(Icons.Default.Home, contentDescription = null, modifier = Modifier.size(26.dp),
-                        tint = if (selected.value == Icons.Default.Home) Color.White else Color.DarkGray)
+                        tint = if (selected.value == Icons.Default.Home) Color.Black else Color.DarkGray)
 
                 }
                 IconButton(
@@ -137,19 +137,19 @@ fun BottomNav () {
 
                     modifier = Modifier.weight(1f)) {
                     Icon(Icons.Default.Place, contentDescription = null, modifier = Modifier.size(26.dp),
-                        tint = if (selected.value == Icons.Default.Place) Color.White else Color.DarkGray)
+                        tint = if (selected.value == Icons.Default.Place) Color.Black else Color.DarkGray)
 
                 }
                 Box(modifier = Modifier
                     .weight(1f)
                     .padding(16.dp),
-                    contentAlignment = Alignment.Center) {
+                contentAlignment = Alignment.Center) {
                     FloatingActionButton(onClick = {
                         selected.value = Icons.Default.Search
                         navigationController.navigate(Screens.NewSpot.screen){
                             popUpTo(0)
                         }}) {
-                        Icon(Icons.Default.Add , contentDescription = null, tint = AppleGreen )
+                        Icon(Icons.Default.Add , contentDescription = null, tint = Color.White )
                     }
                     // Toast.makeText(context,"Add a New Spot", Toast.LENGTH_SHORT).show()
 
@@ -164,7 +164,7 @@ fun BottomNav () {
 
                     modifier = Modifier.weight(1f)) {
                     Icon(Icons.Default.Search, contentDescription = null, modifier = Modifier.size(26.dp),
-                        tint = if (selected.value == Icons.Default.Search) Color.White else Color.DarkGray)
+                        tint = if (selected.value == Icons.Default.Search) Color.Black else Color.DarkGray)
 
                 }
                 IconButton(
@@ -177,7 +177,7 @@ fun BottomNav () {
 
                     modifier = Modifier.weight(1f)) {
                     Icon(Icons.Default.Person, contentDescription = null, modifier = Modifier.size(26.dp),
-                        tint = if (selected.value == Icons.Default.Person) Color.White else Color.DarkGray)
+                        tint = if (selected.value == Icons.Default.Person) Color.Black else Color.DarkGray)
 
                 }
 

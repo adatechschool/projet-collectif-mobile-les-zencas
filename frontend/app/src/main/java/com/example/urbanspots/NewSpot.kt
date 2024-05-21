@@ -4,6 +4,7 @@ import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -29,13 +30,21 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 
 @Composable
@@ -45,11 +54,51 @@ fun NewSpotScreen(){
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(
-            text = "Create a spot",
-            style = MaterialTheme.typography.displayMedium,
-            modifier = Modifier.padding(top = 40.dp, bottom = 50.dp)
-        )
+        Surface(
+            color = Color.White,
+            modifier = Modifier.fillMaxSize()
+        ) {
+
+            Box(modifier =  Modifier.fillMaxSize()){
+
+
+                /// Content
+
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(horizontal = 24.dp)
+                ) {
+
+                    // Logo
+                    Image(painter = painterResource(id = R.drawable.logo_black),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .padding(top = 54.dp)
+                            .height(100.dp)
+                            .align(Alignment.Start)
+                            .offset(x = (-20).dp)
+                    )
+
+                    Text(text = "Add a spot",
+                        style = TextStyle(
+                            fontSize = 28.sp,
+                            fontWeight = FontWeight(500),
+                            color = Color.Black
+                        ),
+                        modifier = Modifier.align(Alignment.Start)
+                    )
+
+                    Text("Share your spot to create unforgettable experiences",
+                        style = TextStyle(
+                            fontSize = 20.sp,
+                            color = Color.Black
+                        ),
+                        modifier = Modifier
+                            .align(Alignment.Start)
+                            .padding(bottom = 24.dp)
+                    )
         Spacer(modifier = Modifier.height(20.dp))
         DetailsInputs()
         Spacer(modifier = Modifier.height(20.dp))
@@ -57,6 +106,9 @@ fun NewSpotScreen(){
         Spacer(modifier = Modifier.height(20.dp))
     }
     SubmitBtn()
+                }
+                }
+        }
 }
 
 // TODO : créer un photos Upload
@@ -82,7 +134,10 @@ fun PhotoUpload(modifier: Modifier = Modifier){
                         singlePhotoPickerLauncher.launch(
                             PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
                         )
-                              }
+                              },
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color.Black
+                    ),
                     ) {
                     Text(text = "Pick one photo")
                 }
@@ -120,7 +175,7 @@ fun DetailsInputs(modifier: Modifier = Modifier){
 
 @Composable
 fun TextInput(label: String, modifier: Modifier = Modifier) {
-    var text by remember { mutableStateOf(TextFieldValue("Entrer le détail")) }
+    var text by remember { mutableStateOf(TextFieldValue("Enter the details")) }
     OutlinedTextField(
         value = text,
         onValueChange = { text = it },
@@ -148,6 +203,9 @@ fun SubmitBtn(modifier: Modifier = Modifier) {
         Button(
             onClick = { /*TODO*/ },
             shape = RectangleShape,
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color.Black
+            ),
             modifier = Modifier.fillMaxWidth()
                 .height(60.dp)
         ) {
