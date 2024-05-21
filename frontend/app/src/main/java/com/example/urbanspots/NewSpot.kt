@@ -99,16 +99,16 @@ fun NewSpotScreen(){
                             .align(Alignment.Start)
                             .padding(bottom = 24.dp)
                     )
-        Spacer(modifier = Modifier.height(20.dp))
-        DetailsInputs()
-        Spacer(modifier = Modifier.height(20.dp))
-        PhotoUpload()
-        Spacer(modifier = Modifier.height(20.dp))
-    }
-    SubmitBtn()
+                    Spacer(modifier = Modifier.height(20.dp))
+                    DetailsInputs()
+                    Spacer(modifier = Modifier.height(20.dp))
+                    PhotoUpload()
+                    Spacer(modifier = Modifier.height(20.dp))
                 }
-                }
+                SubmitBtn()
+            }
         }
+    }
 }
 
 // TODO : créer un photos Upload
@@ -134,11 +134,11 @@ fun PhotoUpload(modifier: Modifier = Modifier){
                         singlePhotoPickerLauncher.launch(
                             PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
                         )
-                              },
+                    },
                     colors = ButtonDefaults.buttonColors(
                         containerColor = Color.Black
                     ),
-                    ) {
+                ) {
                     Text(text = "Pick one photo")
                 }
             }
