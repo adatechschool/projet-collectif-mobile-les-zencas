@@ -24,6 +24,7 @@ fun DetailScreen(
     modifier: Modifier = Modifier,
     photos: Array<Int>,
     names: Array<String>,
+    destination: Array<String>,
     description: Array<String>,
     itemIndex: Int?
 ) {
@@ -44,6 +45,7 @@ fun DetailScreen(
            )
        }
         Text(text = names[itemIndex!!], fontSize = 30.sp, fontWeight = FontWeight.Bold)
-        Text(text = description[itemIndex], fontSize = 18.sp)
+        Text(text = destination[itemIndex], fontSize = 18.sp)
+        Text(text = description[itemIndex], fontSize = 25.sp)
     }
 }
