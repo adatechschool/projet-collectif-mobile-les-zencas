@@ -55,15 +55,16 @@ fun LoginScreen(
                     .padding(horizontal = 24.dp)
             ) {
 
+
                 // Logo
                 Image(painter = painterResource(id = R.drawable.logo_black),
                     contentDescription = null,
                     modifier = Modifier
-                        .padding(top = 54.dp)
+                        .padding(top = 15.dp)
                         .height(100.dp)
                         .align(Alignment.Start)
                         .offset(x = (-20).dp)
-                    )
+                )
 
                 Text(text = "Sign In",
                     style = TextStyle(

@@ -24,7 +24,6 @@ fun SpotList () {
         R.drawable.pont_des_arts,
         R.drawable.pyramide_louvre,
         R.drawable.rue_cremieux,
-
     )
 
     val names = arrayOf(
@@ -38,7 +37,6 @@ fun SpotList () {
         "La Pyramide du Louvre",
         "La rue Crémieux",
         "Pont des Arts, 75006 Paris",
-
     )
 
     val destination = arrayOf(
@@ -53,7 +51,6 @@ fun SpotList () {
     )
 
     val description = arrayOf(
-
         "Commandée à l’artiste Daniel Buren, « Les deux Plateaux » plus communément appelées « Les colonnes de Buren » sont situées dans la cour d’honneur du Palais-Royal, juste à côté du jardin aux bancs-poèmes de Colette et Cocteau. Ces 260 colonnes octogonales rayées de noir et de blanc sont devenues l’un des symboles de Paris. On aime y faire des photos « cliché » ou saugrenues… Sans conteste l’un des spots extérieurs les plus Instagrammables à Paris !",
         "Si vous passez dans le 5e arrondissement de Paris, pourquoi ne pas faire une halte à la Grande Mosquée de Paris, l’une des plus anciennes mosquées de France ? La Grande Mosquée, c’est une balade au jardin des délices où il y a mille merveilles à voir et à photographier. Un véritable bijou architectural où se balader, boire un thé à la menthe autour de quelques pâtisseries orientales, promesse d’un moment hors du temps.",
         "L’iconique Maison Rose de Montmartre est l’un des lieux parisiens les plus photographiés. Avec sa belle couleur rose et ses allures de maison de campagne, elle a définitivement tout pour plaire. Mais elle n’est pas seulement belle. Ancien repaire de Piaf, d’Aznavour, de Barbara ou de Brel, elle est aujourd’hui encore et toujours une bonne table de quartier. En terrasse, on profite du charme Montmartre et de ses ruelles pavées. Attablés à l’intérieur, on admire un mobilier chiné, des vielles photos familles et on mange de bons petits plats.",

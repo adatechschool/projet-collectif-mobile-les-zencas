@@ -61,7 +61,6 @@ fun NewSpotScreen(){
 
             Box(modifier =  Modifier.fillMaxSize()){
 
-
                 /// Content
 
                 Column(
@@ -69,25 +68,23 @@ fun NewSpotScreen(){
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(horizontal = 24.dp)
+                        .padding(top = 40.dp)
+
                 ) {
 
-                    // Logo
-                    Image(painter = painterResource(id = R.drawable.logo_black),
-                        contentDescription = null,
-                        modifier = Modifier
-                            .padding(top = 54.dp)
-                            .height(100.dp)
-                            .align(Alignment.Start)
-                            .offset(x = (-20).dp)
-                    )
 
                     Text(text = "Add a spot",
+
+
                         style = TextStyle(
+
                             fontSize = 28.sp,
                             fontWeight = FontWeight(500),
                             color = Color.Black
                         ),
-                        modifier = Modifier.align(Alignment.Start)
+                        modifier = Modifier
+                            .align(Alignment.Start),
+
                     )
 
                     Text("Share your spot to create unforgettable experiences",
@@ -267,3 +264,5 @@ fun DropdownMenuExample() {
         Text(text = "Selected item: ${selectedItem.value}", modifier = Modifier.padding(top = 16.dp))
     }
 }
+
+

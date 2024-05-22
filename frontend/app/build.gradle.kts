@@ -61,6 +61,8 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.play.services.drive)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.androidx.runtime.livedata)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -72,4 +74,6 @@ dependencies {
     implementation ("androidx.navigation:navigation-compose:2.7.6")
     implementation("io.coil-kt:coil-compose:2.6.0")
     implementation(libs.androidx.core.splashscreen)
+
+
 }
