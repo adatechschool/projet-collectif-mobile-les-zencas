@@ -9,10 +9,6 @@ import android.animation.ObjectAnimator
 import android.view.View
 import android.view.animation.OvershootInterpolator
 import androidx.activity.viewModels
-/*
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.viewModels */
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -41,10 +37,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.urbanspots.ui.theme.AppleGreen
 import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.example.urbanspots.screens.MainScreen
 import com.example.urbanspots.ui.theme.UrbanspotsTheme
 
 
@@ -193,10 +187,8 @@ fun BottomNav () {
             composable(Screens.MainScreen.screen){ SpotList() }
             composable(Screens.SpotMap.screen){ SpotMap() }
             composable(Screens.NewSpot.screen){ NewSpotScreen()}
-            composable(Screens.Filters.screen){ Filters()}
+            composable(Screens.Filters.screen){ Filters() }
             composable(Screens.Profile.screen){ Profile()}
-
-
 
         }
 
