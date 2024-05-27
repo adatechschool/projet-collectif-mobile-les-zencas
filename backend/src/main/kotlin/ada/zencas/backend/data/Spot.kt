@@ -32,6 +32,10 @@ class Spot {
     @Column(name = "longitude", nullable = false)
     var longitude: String = ""
 
+    @NotBlank
+    @Column(name = "photo_url", nullable = false)
+    var photoUrl: String = ""
+
 //    @NotBlank
 //    @Column(name = "country", nullable = false)
 //    var country: String = ""

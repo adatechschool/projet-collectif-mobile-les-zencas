@@ -8,6 +8,7 @@ data class SpotBasic(
     val category: String,
     val latitude: String,
     val longitude: String,
+    val photoUrl: String,
 //    val country: String,
 //    val city: String,
 //    val place: String,

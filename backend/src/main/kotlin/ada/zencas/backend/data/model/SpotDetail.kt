@@ -10,6 +10,7 @@ data class SpotDetail(
     val description: String,
     val latitude: String,
     val longitude: String,
+    val photoUrl: String,
 //    val country: String,
 //    val city: String,
 //    val place: String,
